@@ -2,12 +2,13 @@ import { spawn } from "node:child_process";
 import { createServer, type ServerResponse } from "node:http";
 import { exit } from "node:process";
 import { setTimeout } from "node:timers/promises";
+import { flatten } from "flat";
 
 const PORT = 5555;
 const ORIGIN = `http://localhost:${PORT}`;
 
 export async function preview(rows: object[]) {
-  const body = JSON.stringify(rows);
+  const body = JSON.stringify(rows.map((row) => flatten(row)));
   for (let attempt = 0; ; attempt++) {
     try {
       await fetch(`${ORIGIN}/data`, { method: "POST", body });
@@ -74,7 +75,7 @@ const server = createServer((req, res) => {
                 const rows = JSON.parse(e.data);
                 const columns = [...new Set(rows.flatMap(Object.keys))].map((field) => ({ title: field, field }));
                 if (!table) {
-                table = new Tabulator("#table", { data: rows, columns, height: "100%", layout: "fitData"});
+                table = new Tabulator("#table", { data: rows, columns, height: "100%", layout: "fitData", nestedFieldSeparator: false });
                 } else {
                 const fields = columns.map((c) => c.field).join();
                 if (fields !== table.getColumns().map((c) => c.getField()).join()) table.setColumns(columns);
