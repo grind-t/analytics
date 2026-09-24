@@ -1,4 +1,3 @@
-// https://nodejs.org/api/typescript.html#type-stripping
 {
   "compilerOptions": {
     "target": "esnext",

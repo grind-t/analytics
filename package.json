@@ -1,14 +1,14 @@
 {
-  "name": "@grind-t/lib",
+  "name": "@grind-t/analytics",
   "version": "1.0.0",
-  "homepage": "https://github.com/grind-t/lib#readme",
+  "homepage": "https://github.com/grind-t/analytics#readme",
   "bugs": {
-    "url": "https://github.com/grind-t/lib/issues"
+    "url": "https://github.com/grind-t/analytics/issues"
   },
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/grind-t/lib.git"
+    "url": "git+https://github.com/grind-t/analytics.git"
   },
   "files": [
     "dist"
@@ -27,7 +27,6 @@
     "test:unit": "node --experimental-transform-types --experimental-test-module-mocks --test \"src/**/*.unit.test.ts\"",
     "test:e2e": "node --experimental-transform-types --experimental-test-module-mocks --test \"src/**/*.e2e.test.ts\"",
     "test": "node --experimental-transform-types --experimental-test-module-mocks --test \"src/**/*.test.ts\"",
-    "check": "npm run fmt && npm run lint && npm run test",
     "build": "tsdown"
   },
   "devDependencies": {
