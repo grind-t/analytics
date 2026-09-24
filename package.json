@@ -36,5 +36,8 @@
     "oxlint-tsgolint": "latest",
     "tsdown": "latest",
     "typescript": "latest"
+  },
+  "dependencies": {
+    "flat": "^6.0.1"
   }
 }
